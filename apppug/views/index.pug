@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  ul
+    li: a(href='/main') Main page
+    li: a(href='/main/one') Subroute One
+    li: a(href='/main/two') Subroute Two
