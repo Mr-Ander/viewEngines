@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .produto-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .produto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .produto-imagem {
+            width: 100%;
+            height: 200px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        .produto-info {
+            padding: 15px;
+        }
+        .produto-nome {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .produto-descricao {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .produto-preco {
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+        .produto-botoes {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .btn-comprar {
+            background-color: #27ae60;
+            color: white;
+        }
+        .btn-comprar:hover {
+            background-color: #229954;
+        }
+        .btn-detalhes {
+            background-color: #3498db;
+            color: white;
+        }
+        .btn-detalhes:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nossos Produtos</h1>
+        
+        <div class="produtos-grid">
+            {{#if produtos}}
+                {{#each produtos}}
+                    <div class="produto-card">
+                        <div class="produto-imagem">
+                            {{imagem}}Imagem do Produto
+                        </div>
+                        <div class="produto-info">
+                            <div class="produto-nome">{{nome}}</div>
+                            <div class="produto-descricao">{{descricao}}</div>
+                            <div class="produto-preco">R$ {{preco}}</div>
+                            <div class="produto-botoes">
+                                <button class="btn-detalhes">Detalhes</button>
+                                <button class="btn-comprar">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <p style="grid-column: 1/-1; text-align: center; color: #999;">Nenhum produto disponível.</p>
+            {{/if}}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camisetas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .acao-botoes {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .btn-comprar {
+            background-color: #27ae60;
+            color: white;
+        }
+        .btn-comprar:hover {
+            background-color: #229954;
+        }
+        .btn-detalhes {
+            background-color: #3498db;
+            color: white;
+        }
+        .btn-detalhes:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Camisetas</h1>
+        
+        <% if (camisetas && camisetas.length > 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Quantidade</th>
+                        <th>Valor Unitário</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% camisetas.forEach(camiseta => { %>
+                        <tr>
+                            <td><%= camiseta.id %></td>
+                            <td><%= camiseta.nome %></td>
+                            <td><%= camiseta.descrição %></td>
+                            <td><%= camiseta.quantidade %></td>
+                            <td>R$ <%= camiseta.valhorUnitario %></td>
+                            <td>
+                                <div class="acao-botoes">
+                                    <button class="btn-detalhes">Detalhes</button>
+                                    <button class="btn-comprar">Comprar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p style="text-align: center; color: #999;">Nenhuma camiseta disponível.</p>
+        <% } %>
+    </div>
+</body>
+</html>
